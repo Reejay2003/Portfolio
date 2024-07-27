@@ -3,31 +3,39 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
+  --foreground-rgb: 255, 255, 255; /* Default text color white */
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --primary: #121212;      /* Define your primary color */
+  --secondary: #007575;    /* Define your secondary color */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
+    --foreground-rgb: 255, 255, 255; /* Text color remains white in dark mode */
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
+    --primary: #000000;    /* Change primary color for dark mode */
+    --secondary: #ffffff;  /* Change secondary color for dark mode if needed */
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+html, body {
+  color: rgb(var(--foreground-rgb)); /* Use the variable for text color */
+  background-color: var(--primary);  /* Use the primary color for background */
+  scroll-padding-top: 70px;
 }
 
 @layer utilities {
+  .text-secondary {
+    color: var(--secondary);
+  }
   .text-balance {
     text-wrap: balance;
   }
+  /* Ensure the link doesn't show the default underline or link style */
+  .no-underline {
+  text-decoration: none;
+}
+
 }
